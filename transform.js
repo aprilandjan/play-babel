@@ -1,5 +1,9 @@
 const core = require('@babel/core');
+const plugin = require('./plugin');
 
-core.transform({
-
-})
+//  transform, using
+module.exports = function (file) {
+  return core.transformFileSync(file, {
+    plugins: [plugin],
+  })
+}
