@@ -1,10 +1,14 @@
 {
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "@babel/core": "^7.6.4",
     "@babel/generator": "^7.6.4",
     "@babel/parser": "^7.6.4",
     "@babel/template": "^7.6.0",
     "@babel/traverse": "^7.6.3",
-    "glob": "^7.1.5"
+    "glob": "^7.1.5",
+    "jest": "^24.9.0"
   }
 }
