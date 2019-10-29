@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`plguin.js should transform correctly with customized params 1`] = `
+"function square(z) {
+  return z * z;
+}
+
+;"
+`;
+
+exports[`plguin.js should transform correctly with no params 1`] = `
+"function square(a) {
+  return a * a;
+}
+
+;"
+`;
