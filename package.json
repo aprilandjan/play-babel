@@ -1,4 +1,7 @@
 {
+  "private": true,
+  "name": "play-babel",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
