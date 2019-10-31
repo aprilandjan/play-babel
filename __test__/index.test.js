@@ -1,19 +1,22 @@
 const transpile = require('../index');
 const glob = require('glob');
-const fs = require('fs');
+const fs = require('fs-extra');
+const dirCompare= require('dir-compare');
+const path = require('path');
 
-describe('transpile', () => {
+describe('transpile directory', () => {
   const config = {
-    src: '../src',
-    dist: '../dist',
-  }
+    src: path.join(__dirname, './fixtures/src'),
+    dist: path.join(__dirname, './dist'),
+  };
+  const referred = path.join(__dirname, './fixtures/dist');
   beforeEach(() => {
-    // TODO: clear dist folder
+    fs.ensureDirSync(config.dist);
+    fs.emptyDirSync(config.dist);
   })
   it('should correctly transpile', () => {
     transpile(config);
-    // TODO:
-    // file exist
-    // file content matching
+    const result = dirCompare.compareSync(config.dist, referred);
+    expect(result.same).toBeTruthy();
   });
 });

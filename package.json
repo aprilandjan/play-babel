@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "play-babel",
+  "name": "babel-plugin-replace-identifier",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -13,5 +13,9 @@
     "@babel/traverse": "^7.6.3",
     "glob": "^7.1.5",
     "jest": "^24.9.0"
+  },
+  "devDependencies": {
+    "dir-compare": "^1.7.3",
+    "fs-extra": "^8.1.0"
   }
 }
