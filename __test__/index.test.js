@@ -1,5 +1,4 @@
 const transpile = require('../index');
-const glob = require('glob');
 const fs = require('fs-extra');
 const dirCompare= require('dir-compare');
 const path = require('path');

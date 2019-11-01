@@ -1,6 +1,6 @@
 # play babel
 
-A simple `babel` transforming script.
+An example `babel` plguin & AST transforming script, unittest included.
 
 ## references
 
