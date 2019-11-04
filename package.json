@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "babel-plugin-replace-identifier",
-  "main": "index.js",
+  "name": "babel-plugin-example",
+  "main": "plugin.js",
   "scripts": {
     "test": "jest",
     "prepublishOnly": "npm run test"

@@ -1,4 +1,4 @@
-# play babel
+# babel-plugin-example
 
 An example `babel` plguin & AST transforming script, unittest included.
 
