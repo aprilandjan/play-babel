@@ -5,7 +5,7 @@
 module.exports = (babel) => {
   //  'babel' is `babel-core` exports
   //  't' is 'babel-types' exports
-  const { type: t } = babel;
+  const { types: t } = babel;
   return {
     visitor: {
       //  state.opts is the config options of the plugin
