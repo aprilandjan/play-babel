@@ -1,5 +1,5 @@
 const core = require('@babel/core');
-const plugin = require('./plugin');
+const plugin = require('./name.plugin');
 
 //  transform, using
 module.exports = function (file) {

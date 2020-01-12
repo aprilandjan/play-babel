@@ -1,5 +1,5 @@
 const babel = require('@babel/core');
-const plugin = require('../plugin');
+const plugin = require('../name.plugin');
 
 var example = `
 function square(n) {
@@ -7,7 +7,7 @@ function square(n) {
 };
 `;
 
-describe('plguin.js', () => {
+describe('name.plugin.js', () => {
   it('should transform correctly with no params', () => {
     const { code } = babel.transform(example, {
       plugins: [

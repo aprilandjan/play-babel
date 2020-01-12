@@ -2,6 +2,12 @@
 
 An example `babel` plugin & AST transforming script, unittest included.
 
+## `name.plugin.js`
+
+replace identifier `n` into specific names
+
+##
+
 ## `enter` and `exit`
 
 ## references
