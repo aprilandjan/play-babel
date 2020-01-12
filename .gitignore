@@ -1,4 +1,7 @@
 node_modules
 
+.vscode
+
 dist
+
 !__test__/fixtures/dist
