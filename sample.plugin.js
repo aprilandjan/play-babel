@@ -18,7 +18,7 @@ module.exports = ({ types: t}) => {
       //   }
       // },
       //  function f () {}
-      FunctionDeclaration: {
+      "FunctionDeclaration": {
         enter(path) {
           // console.log('FunctionDeclaration enter called', path.node.id.name);
           //  1. get the path of the function body. actually a BlockStatement
@@ -47,13 +47,19 @@ module.exports = ({ types: t}) => {
             t.memberExpression(t.identifier('console'), t.identifier('timeEnd')),
             [t.stringLiteral(path.node.id.name)],
           );
-          //  3. insert the expression
+          //  3. insert the expression directly. This is not ideal
           // bodyPath.pushContainer('body', exp);
 
-          //  4. find all 'ReturnStatement' for **current function body**
+          //  FIXME: check if the last line of the block is ReturnStatement
+
+          //  3. find all 'ReturnStatement' for **current function body**
           bodyPath.traverse({
             ReturnStatement(innerPath) {
-              innerPath.insertBefore(exp);
+              //  find closest function body for this return
+              const parentFuncPath = innerPath.getFunctionParent();
+              if (parentFuncPath.get('body') === bodyPath) {
+                innerPath.insertBefore(exp);
+              }
             },
           })
         }

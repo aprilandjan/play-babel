@@ -7,8 +7,6 @@ exports[`sample.plugin.js should transform example1 correctly 1`] = `
   for (var i = 0; i < 100; i++) {
     console.log(i);
   }
-
-  console.timeEnd(\\"abc\\")
 }"
 `;
 
@@ -20,8 +18,8 @@ exports[`sample.plugin.js should transform example2 correctly 1`] = `
     console.log(i);
   }
 
-  return 'done';
   console.timeEnd(\\"def\\")
+  return 'done';
 }"
 `;
 
@@ -33,12 +31,13 @@ exports[`sample.plugin.js should transform example3 correctly 1`] = `
     console.log(i);
 
     if (Math.random() < 0.5) {
+      console.timeEnd(\\"joker\\")
       return 'abort';
     }
   }
 
-  return 'done';
   console.timeEnd(\\"joker\\")
+  return 'done';
 }"
 `;
 
@@ -46,10 +45,11 @@ exports[`sample.plugin.js should transform example4 correctly 1`] = `
 "function terrible() {
   console.time(\\"terrible\\");
 
-  const log = () => {
-    console.timeEnd(\\"terrible\\")
-    return 'log!';
-  };
+  function log() {
+    console.time(\\"log\\");
+    console.timeEnd(\\"log\\")
+    return 'log';
+  }
 
   for (var i = 0; i < 100; i++) {
     console.log(i);

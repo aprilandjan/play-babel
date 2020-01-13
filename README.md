@@ -6,7 +6,15 @@ An example `babel` plugin & AST transforming script, unittest included.
 
 replace identifier `n` into specific names
 
-## `path.get()`
+## `sample.plugin.js`
+
+add `console.time` and `console.timeEnd` to every function calls to output its execution time.
+
+## useful concepts & methods
+
+### `enter` and `exit`
+
+### `path.get()`
 
 This returns the `path` of specific properties, see [doc](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#get-the-path-of-sub-node). For example:
 
@@ -18,14 +26,14 @@ console.log(a === b.node);  //  true
 
 Besides, there's no way to get `path` of a given `node`. So if we want the `path`, use this `path.get()` properly.
 
-## `unshiftContainer` & `pushContainer`
+### `unshiftContainer` & `pushContainer`
 
 ```js
 path.get('body').unshiftContainer('body', t.expressionStatement(t.stringLiteral('before')));
 path.get('body').pushContainer('body', t.expressionStatement(t.stringLiteral('after')));
 ```
 
-## insert source code
+### insert source code
 
 There's no direct method to insert source code string into AST. Need to use `@babel/types` to create representing nodes firstly:
 
@@ -49,8 +57,6 @@ const ast = codeMaker({
   NAME: types.stringLiteral('abc'),
 });
 ```
-
-## `enter` and `exit`
 
 ## references
 
