@@ -37,7 +37,7 @@ module.exports = ({ types: t}) => {
           //  3. insert the expression
           bodyPath.unshiftContainer('body', exp);
         },
-        //  TODO: doses the previously inserted AST nodes exist here?
+        //  TODO: does the previously inserted AST nodes exist here?
         exit(path) {
           // console.log('FunctionDeclaration exit called', path.node.id.name);
           //  1. get the path of the function body
@@ -50,18 +50,22 @@ module.exports = ({ types: t}) => {
           //  3. insert the expression directly. This is not ideal
           // bodyPath.pushContainer('body', exp);
 
-          //  FIXME: check if the last line of the block is ReturnStatement
-
-          //  3. find all 'ReturnStatement' for **current function body**
-          bodyPath.traverse({
-            ReturnStatement(innerPath) {
-              //  find closest function body for this return
-              const parentFuncPath = innerPath.getFunctionParent();
-              if (parentFuncPath.get('body') === bodyPath) {
-                innerPath.insertBefore(exp);
-              }
-            },
-          })
+          //  3. check if the last line of the block is ReturnStatement
+          const last = bodyPath.get('body').pop();
+          if (last.type !== 'ReturnStatement') {
+            last.insertAfter(exp);
+          } else {
+            //  4. find all 'ReturnStatement' for **current function body**
+            bodyPath.traverse({
+              ReturnStatement(innerPath) {
+                //  find closest function body for this return
+                const parentFuncPath = innerPath.getFunctionParent();
+                if (parentFuncPath.get('body') === bodyPath) {
+                  innerPath.insertBefore(exp);
+                }
+              },
+            })
+          }
         }
       }
       // FunctionDeclaration (path) {

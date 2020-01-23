@@ -53,7 +53,6 @@ const transform = (source) => babel.transform(source, {
   plugins: [plugin]
 }).code;
 
-
 describe('sample.plugin.js', () => {
   it('should transform example1 correctly', () => {
     const result = transform(example1);
