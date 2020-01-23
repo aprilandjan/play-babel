@@ -14,6 +14,8 @@ add `console.time` and `console.timeEnd` to every function calls to output its e
 
 ### `enter` and `exit`
 
+Will `exit` include some `enter` inserted statements?
+
 ### `path.get()`
 
 This returns the `path` of specific properties, see [doc](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/en/plugin-handbook.md#get-the-path-of-sub-node). For example:
